@@ -65,9 +65,12 @@ fn main() {
         let contents = fs::read_dir(&path).expect(&("Failed to read path".to_owned() + &path));
         
         for c in contents {
-            println!("{}", c.cloned()
-                     .expect("Invalid path")
-                     .path().display());
+            c.iter()
+             .for_each(|item| {
+                println!("{}", item.clone()
+                            .path()
+                            .display())
+                });
             println!("{}", c
                      .expect("Invalid path")
                      .path()
